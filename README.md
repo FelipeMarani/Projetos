@@ -1,1 +1,1 @@
-<h1>Projetos voltado a liguagem C<h1>
+<h1>Projetos voltados a liguagem C<h1>
