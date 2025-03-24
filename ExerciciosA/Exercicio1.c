@@ -5,7 +5,7 @@
 int main()
 {
     char str[50000];
-    int i = 0, cont = 1;
+    int i = 0, cont = 0;
 
     FILE *fp = fopen("/home/fels/Documentos/POD/Textos/IpsonLoren.txt", "r+");
     if (fp == NULL)
@@ -14,15 +14,16 @@ int main()
         exit(1);
     }
 
-    while (!feof(fp))
+    
+
+    while (fgets(str, 50000, fp) !=NULL)
     {
-        fgets(str, 50000, fp);
-        for (i = 0; i < sizeof(str); i++)
+        for (i = 0; i < strlen(str); i++)
         {
-            if (str[i] == ' ' || str[i] == "\n")
+            if (str[i] == ' ' || str[i] == '\n')
             {
-                cont ++;
-                if (str[i + 1] == ' ' || str[i] == "\n")
+                cont++;
+                if (str[i + 1] == ' ' || str[i] == '\n')
                 {
                     continue;
                 }
