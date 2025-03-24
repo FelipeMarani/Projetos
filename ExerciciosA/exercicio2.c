@@ -14,18 +14,23 @@ int main()
         printf("Erro ao abrir arquivo!");
         exit(1);
     }
-    while (!feof(fp))
+
+    FILE *nfp = fopen("/home/fels/Documentos/POD/Textos/NewIpsonLoren.txt", "a+");
+    if (nfp == NULL) {
+        printf("Erro ao criar o arquivo de cópia!");
+        fclose(fp);
+        exit(1);
+    }
+
+    while (fgets(str, sizeof(str), fp) != NULL)
     {
-        fgets(str, 500000, fp);
-        for (i = 0; i < sizeof(str); i++)
-        {
-            FILE *nfp = fopen("/home/fels/Documentos/POD/Textos/NewIpsonLoren.txt", "a+");
-            fputs(str, nfp);
-            fclose(nfp);
-        }
+        fputs(str, nfp);
     }
 
     printf("feito a nova cópia do arquivo");
-    
+
     fclose(fp);
+    fclose(nfp);
+
+    return 0;
 }
